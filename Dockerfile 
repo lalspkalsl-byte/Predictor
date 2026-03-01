@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Cài system deps cần cho ssl + websockets
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# Không cần expose port vì bot polling outbound
+CMD ["python", "okroi.py"]

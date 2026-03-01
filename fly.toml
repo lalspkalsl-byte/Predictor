@@ -1,0 +1,12 @@
+app = "ten-app-cua-ong"
+primary_region = "sin"
+
+[build]
+
+[env]
+  PYTHONUNBUFFERED = "1"
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
